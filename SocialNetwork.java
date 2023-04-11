@@ -1,6 +1,27 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public class SocialNetwork {
+public class  SocialNetwork extends DiGraph {
+    public SocialNetwork() {
+        super(7);
+        addEdge(Names.ABEL, Names.BINA);
+        addEdge(Names.ABEL, Names.CATO);
+        addEdge(Names.BINA, Names.DANA);
+        addEdge(Names.CATO, Names.ABEL);
+        addEdge(Names.CATO, Names.DANA);
+        addEdge(Names.CATO, Names.EDEN);
+        addEdge(Names.DANA, Names.FERN);
+        addEdge(Names.FERN, Names.EDEN);
+        addEdge(Names.FERN, Names.GENO);
+        addEdge(Names.FERN, Names.DANA);
+        addEdge(Names.FERN, Names.HEDY);
+        addEdge(Names.JODY, Names.HEDY);
+        addEdge(Names.JODY, Names.EDEN);
+        addEdge(Names.INEZ, Names.JODY);
+        addEdge(Names.INEZ, Names.GENO);
+        addEdge(Names.GENO, Names.DANA);
+        addEdge(Names.GENO, Names.INEZ);
+    }
+
     /**
      * COMPLETE THIS METHOD
      * takes the name of a person and should return an ArrayList of String objects, which contains
@@ -10,7 +31,13 @@ public class SocialNetwork {
      */
 
     public ArrayList<String> broadcastsTo(String person){
-        return null;
+        ArrayList<String> followers = new ArrayList<>();
+        for(int i = 0; i < numberOfNodes; i++){
+            if(hasEdge(i, Arrays.asList(Names.networkMembers).indexOf(person))){
+                followers.add(Names.networkMembers[i]);
+            }
+        }
+        return followers;
     }
 
     /**
