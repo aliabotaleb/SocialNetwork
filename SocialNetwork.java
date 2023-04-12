@@ -1,25 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 public class  SocialNetwork extends DiGraph {
-    public SocialNetwork() {
-        super(7);
-        addEdge(Names.ABEL, Names.BINA);
-        addEdge(Names.ABEL, Names.CATO);
-        addEdge(Names.BINA, Names.DANA);
-        addEdge(Names.CATO, Names.ABEL);
-        addEdge(Names.CATO, Names.DANA);
-        addEdge(Names.CATO, Names.EDEN);
-        addEdge(Names.DANA, Names.FERN);
-        addEdge(Names.FERN, Names.EDEN);
-        addEdge(Names.FERN, Names.GENO);
-        addEdge(Names.FERN, Names.DANA);
-        addEdge(Names.FERN, Names.HEDY);
-        addEdge(Names.JODY, Names.HEDY);
-        addEdge(Names.JODY, Names.EDEN);
-        addEdge(Names.INEZ, Names.JODY);
-        addEdge(Names.INEZ, Names.GENO);
-        addEdge(Names.GENO, Names.DANA);
-        addEdge(Names.GENO, Names.INEZ);
+    public SocialNetwork(int numberOfNodes) {
+        super(numberOfNodes);
     }
 
     /**
@@ -71,6 +54,16 @@ public class  SocialNetwork extends DiGraph {
      * @return an ArrayList of String objects that contains the names of all the person who will receive the story
      */
     public ArrayList<String> receiversOf(String person){
-        return null;
+        // get the index of the person name in the Names.networkMembers array
+        int personIndex = Arrays.asList(Names.networkMembers).indexOf(person);
+
+        // call BFS with the adjacency list and personIndex
+        ArrayList<String> receivers = Traversal.BFS(adjacencyList, personIndex);
+
+        // remove the person name from the receivers list
+        receivers.remove(person);
+
+        // return the receivers list
+        return receivers;
     }
 }

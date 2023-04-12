@@ -5,7 +5,7 @@ public class Traversal {
      * REFACTOR THIS METHOD
      * Perform a BFS traversal of the graph, printing the nodes in the order visited
      */
-    public static void BFS(ArrayList<Integer>[] adjList, Integer startNode) {
+    public static ArrayList<String> BFS(ArrayList<Integer>[] adjList, Integer startNode) {
         //create the list of visited nodes and the queue
         ArrayList<Integer> visitedNodes = new ArrayList<>();
         Queue theQueue = new ArrayQueue();
@@ -14,7 +14,7 @@ public class Traversal {
         visitedNodes.add(startNode);
         theQueue.enqueue(startNode);
 
-        while(!theQueue.isEmpty()){
+        while (!theQueue.isEmpty()){
             Integer item = (Integer) theQueue.dequeue();
             //mark all the neighbours of the item which have not been visited as visited and add them to the queue
             for (Integer neighbour:adjList[item]){
@@ -24,6 +24,11 @@ public class Traversal {
                 }
             }
         }
+        ArrayList<String> visitedNodesString = new ArrayList<>();
+        for (Integer node : visitedNodes) {
+            visitedNodesString.add(Names.networkMembers[node]);
+        }
+        return visitedNodesString;
     }
 
     /**

@@ -5,7 +5,23 @@ public class Main {
      * @param socialNetwork stores the graph structure
      */
     private static void buildGraph(SocialNetwork socialNetwork) {
-
+        socialNetwork.addEdge(Names.ABEL, Names.BINA);
+        socialNetwork.addEdge(Names.ABEL, Names.CATO);
+        socialNetwork.addEdge(Names.BINA, Names.DANA);
+        socialNetwork.addEdge(Names.CATO, Names.ABEL);
+        socialNetwork.addEdge(Names.CATO, Names.DANA);
+        socialNetwork.addEdge(Names.CATO, Names.EDEN);
+        socialNetwork.addEdge(Names.DANA, Names.FERN);
+        socialNetwork.addEdge(Names.FERN, Names.EDEN);
+        socialNetwork.addEdge(Names.FERN, Names.GENO);
+        socialNetwork.addEdge(Names.FERN, Names.DANA);
+        socialNetwork.addEdge(Names.FERN, Names.HEDY);
+        socialNetwork.addEdge(Names.JODY, Names.HEDY);
+        socialNetwork.addEdge(Names.JODY, Names.EDEN);
+        socialNetwork.addEdge(Names.INEZ, Names.JODY);
+        socialNetwork.addEdge(Names.INEZ, Names.GENO);
+        socialNetwork.addEdge(Names.GENO, Names.DANA);
+        socialNetwork.addEdge(Names.GENO, Names.INEZ);
     }
 
     /**
@@ -60,7 +76,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SocialNetwork theSocialNetwork = new SocialNetwork();
+        SocialNetwork theSocialNetwork = new SocialNetwork(Names.networkMembers.length);
         buildGraph(theSocialNetwork);
         testBroadCastTo(theSocialNetwork);
 
