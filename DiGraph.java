@@ -20,6 +20,7 @@ public class DiGraph
         }
     }
 
+
     /**
      * Add an edge between the two nodes given
      * @param fromNode the node the edge starts from

@@ -27,12 +27,12 @@ public class Traversal {
     }
 
     /**
-     * REFACTOR THIS METHOD
+     * fix this method
      * Perform a DFS traversal of the graph
      * The refactored method will return true if the destinationNode is encountered in the subgraph descending from
      * startNode
      */
-    public static void DFS(ArrayList<Integer>[] adjList, Integer startNode){
+    public static boolean DFS(ArrayList<Integer>[] adjList, Integer startNode, Integer destinationNode) {
 
         //create the list of visited nodes and the stack
         ArrayList<Integer> visitedNodes = new ArrayList<>();
@@ -44,6 +44,11 @@ public class Traversal {
 
         while(!theStack.isEmpty()){
             Integer item = (Integer) theStack.pop();
+            // Check if the current node is the destination node
+            if (item == destinationNode) {
+                return true;
+            }
+
 
             //mark all the neighbours of the item which have not been visited as visited and add them to the stack
             for (Integer neighbour:adjList[item]){
@@ -52,6 +57,8 @@ public class Traversal {
                     theStack.push(neighbour);
                 }
             }
+
         }
+        return false;
     }
 }

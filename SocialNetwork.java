@@ -53,7 +53,13 @@ public class  SocialNetwork extends DiGraph {
      * source to the target.
      */
     public boolean canReach(String source, String target) {
-        return false;
+        // get the index of the source and target names in the Names.networkMembers array
+        int sourceIndex = Arrays.asList(Names.networkMembers).indexOf(source);
+        int targetIndex = Arrays.asList(Names.networkMembers).indexOf(target);
+
+        // call DFS with the adjacency list, sourceIndex and targetIndex
+        return Traversal.DFS(adjacencyList, sourceIndex, targetIndex);
+
     }
 
     /**
